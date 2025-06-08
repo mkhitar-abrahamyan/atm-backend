@@ -23,3 +23,14 @@ A simple backend for an ATM system.
 ```bash
 git clone https://github.com/mkhitar-abrahamyan/atm-backend
 cd atm-backend
+```
+## Note
+ 
+You need to create .env, something like this
+```bash
+DB_HOST=postgres
+DB_PORT=5432
+DB_USER=postgres
+DB_PASSWORD=postgres
+DB_NAME=atm
+```
