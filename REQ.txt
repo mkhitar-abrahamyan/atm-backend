@@ -1,0 +1,42 @@
+GET Balance
+URL: http://localhost:5000/atm/balance/:userId
+Method: GET
+Example:
+  GET http://localhost:5000/atm/balance/1
+Body: EMPTY
+
+
+POST Deposit
+URL: http://localhost:5000/atm/deposit
+Method: POST
+Body:
+{
+  "userId": 1,
+  "amount": 100.00
+}
+
+POST Withdraw
+URL: http://localhost:5000/atm/withdraw
+Method: POST
+Body:
+{
+  "userId": 1,
+  "amount": 50.00
+}
+
+POST Transfer
+URL: http://localhost:5000/atm/transfer
+Method: POST
+Body:
+{
+  "fromUserId": 1,
+  "toUserId": 2,
+  "amount": 25.00
+}
+
+GET Transactions
+URL: http://localhost:5000/atm/transactions/:userId
+Method: GET
+Example:
+  GET http://localhost:5000/atm/transactions/1
+Body: EMPTY

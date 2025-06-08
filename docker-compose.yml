@@ -1,0 +1,39 @@
+# Path to my directory - cd /mnt/c/Users/mxosa/OneDrive/'Рабочий стол'/Projects/atm-backend
+# Run container - docker compose up -d
+
+version: "3.8"
+
+services:
+  postgres:
+    image: postgres:15
+    restart: always
+    container_name: atm_postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: atm
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - "5432:5432" # optional, for local access from host
+
+  backend:
+    build: .
+    container_name: atm_backend
+    restart: always
+    environment:
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_USER: postgres
+      DB_PASSWORD: postgres
+      DB_NAME: atm
+    depends_on:
+      - postgres
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./:/usr/src/app
+    command: npm run dev
+
+volumes:
+  pgdata:
